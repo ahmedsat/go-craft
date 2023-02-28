@@ -1,12 +1,12 @@
 package main
 
-import gocraft "github.com/ahmedsat/go-craft/go-craft"
+import (
+	"github.com/ahmedsat/go-craft/app"
+	_ "github.com/ahmedsat/go-craft/worlds"
+)
 
 func main() {
-	test()
-}
 
-func test() {
-	g := gocraft.NewGame()
-	g.Run()
+	// Create and run application
+	app.Create().Run()
 }
