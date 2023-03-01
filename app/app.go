@@ -31,20 +31,17 @@ type App struct {
 	statsTable *stats.StatsTable // statistics table panel
 
 	camera *camera.Camera
+
+	fps float64
 }
 
-func (a *App) Scene() *core.Node {
-	return a.scene
-}
+func (a *App) FrameRater() *util.FrameRater { return a.frameRater }
 
-func (a *App) Camera() *camera.Camera {
-	return a.camera
-}
+func (a *App) Scene() *core.Node { return a.scene }
 
-func (a *App) Log() *logger.Logger {
+func (a *App) Camera() *camera.Camera { return a.camera }
 
-	return a.log
-}
+func (a *App) Log() *logger.Logger { return a.log }
 
 // OnWindowResize is default handler for window resize events.
 func (a *App) OnWindowResize() {
@@ -154,18 +151,19 @@ func (a *App) Update(rend *renderer.Renderer, deltaTime time.Duration) {
 
 	// Control and update FPS
 	a.frameRater.Wait()
-	// a.updateFPS()
+	a.updateFPS()
 }
 
-// // UpdateFPS updates the fps value in the window title or header label
-// func (a *App) updateFPS() {
+// UpdateFPS updates the fps value in the window title or header label
+func (a *App) updateFPS() {
 
-// 	// Get the FPS and potential FPS from the frameRater
-// 	fps, pfps, ok := a.frameRater.FPS(time.Duration(*oUpdateFPS) * time.Millisecond)
-// 	if !ok {
-// 		return
-// 	}
+	// Get the FPS and potential FPS from the frameRater
+	fps, _, ok := a.frameRater.FPS(time.Second)
+	if !ok {
+		return
+	}
 
-// 	// Show the FPS in the header label
-// 	a.labelFPS.SetText(fmt.Sprintf("%3.1f / %3.1f", fps, pfps))
-// }
+	a.fps = fps
+}
+
+func (a *App) FPS() float64 { return a.fps }

@@ -33,12 +33,12 @@ func (t *mainWorld) Start(a *app.App) {
 	a.Scene().Add(ah)
 
 	// Creates a grid helper and saves its pointer in the test state
-	t.grid = helper.NewGrid(50, 1, &math32.Color{0.4, 0.4, 0.4})
+	t.grid = helper.NewGrid(50, 1, &math32.Color{R: 0.4, G: 0.4, B: 0.4})
 	a.Scene().Add(t.grid)
 
 	// Changes the camera position
 	a.Camera().SetPosition(0, 4, 10)
-	a.Camera().LookAt(&math32.Vector3{0, 0, 0}, &math32.Vector3{0, 1, 0})
+	a.Camera().LookAt(&math32.Vector3{X: 0, Y: 0, Z: 0}, &math32.Vector3{X: 0, Y: 1, Z: 0})
 }
 
 // This method will be called at every frame

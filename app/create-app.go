@@ -5,6 +5,7 @@ import (
 	"github.com/g3n/engine/camera"
 	"github.com/g3n/engine/core"
 	"github.com/g3n/engine/gls"
+	"github.com/g3n/engine/gui"
 	"github.com/g3n/engine/light"
 	"github.com/g3n/engine/math32"
 	"github.com/g3n/engine/util"
@@ -19,6 +20,7 @@ func Create() (a *App) {
 	a.world = worlds["worlds.test"]
 
 	a.Application = app.App()
+
 	// Creates application logger
 	a.log = logger.New("GC", nil)
 	a.log.AddWriter(logger.NewConsole(false))
@@ -38,6 +40,7 @@ func Create() (a *App) {
 
 	// Create scene
 	a.scene = core.NewNode()
+	gui.Manager().Set(a.Scene())
 
 	// Create camera and orbit control
 	width, height := a.GetSize()
