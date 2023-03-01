@@ -49,7 +49,7 @@ func Create() (a *App) {
 	a.scene.Add(a.camera) // Add camera to scene (important for audio demos)
 
 	// Create and add ambient light to scene
-	a.ambLight = light.NewAmbient(&math32.Color{1.0, 1.0, 1.0}, 0.5)
+	a.ambLight = light.NewAmbient(&math32.Color{R: 1.0, G: 1.0, B: 1.0}, 0.5)
 	a.scene.Add(a.ambLight)
 
 	// Create frame rater

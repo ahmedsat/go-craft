@@ -101,13 +101,13 @@ func (a *App) setupScene() {
 	a.Renderer().SetObjectSorting(true)
 
 	// Reset ambient light
-	a.ambLight.SetColor(&math32.Color{1.0, 1.0, 1.0})
+	a.ambLight.SetColor(&math32.Color{R: 1.0, G: 1.0, B: 1.0})
 	a.ambLight.SetIntensity(0.5)
 
 	// Reset camera
 	a.camera.SetPosition(0, 0, 5)
 	a.camera.UpdateSize(5)
-	a.camera.LookAt(&math32.Vector3{0, 0, 0}, &math32.Vector3{0, 1, 0})
+	a.camera.LookAt(&math32.Vector3{X: 0, Y: 0, Z: 0}, &math32.Vector3{X: 0, Y: 1, Z: 0})
 	a.camera.SetProjection(camera.Perspective)
 
 	// If audio active, resets global listener parameters
