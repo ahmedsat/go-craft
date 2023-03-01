@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/ahmedsat/go-craft/app"
+	"github.com/g3n/engine/camera"
 	"github.com/g3n/engine/gui"
 	"github.com/g3n/engine/math32"
 	"github.com/g3n/engine/util/helper"
@@ -72,6 +73,7 @@ func (t *testingWorld) Start(a *app.App) {
 	t.cameraPos.Set(0, 4, 10)
 	t.cameraTarget.Set(0, 0, 0)
 	t.cameraUp.Set(0, 1, 0)
+	camera.NewOrbitControl(t.Camera())
 	t.updateCamera()
 
 	t.playerController()
